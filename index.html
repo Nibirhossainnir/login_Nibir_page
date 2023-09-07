@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=.5">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="button">
+    <label for="button">Music:</label>
+    <button onclick="audio.play()" name="button">ON</button>
+    <button onclick="audio.pause()" name="button">OFF</button>
+    </div>
+        <div id="box" class="box">
+    <span class="line"></span>
+     <form id="myForm" action="Nibir_page.html" onsubmit="return validate()">
+        <h2>Sing in</h2>
+        <div class="inputBox">
+            <input id="username" type="text" required>
+            <span>Username</span>
+            <i></i>
+        </div>
+        <div id="fu">Please fill up your username</div>
+        <div class="inputBox">
+            <input id="pass" class="pass" type="password" required>
+            <span>Password</span>
+            <i></i>
+            </div>
+        <div id="fp">Please fill up your password</div>
+            <div id="wr">Wrong username or password!</div>
+        <div class="links">
+            <a href="#">Forgot Password</a>
+            <a href="#">Signup</a>
+        </div>
+        <input type="button" value="Login" onclick="validate()">
+    </form> 
+   </div>
+   <div id="popup" class="popup">
+    <img src="tick.png">
+    <p>You have successfully logged in!</p>
+    <button type="button" onclick="validate2()">OK</button>
+ </div>
+ <script type="text/javascript">
+    
+     const audio = new Audio()
+   audio.src ="./ring.mp3";
+   window.onload= function(){
+    audio.loop = true;
+    audio.play();
+    }
+function validate(){
+    var wrong = document.getElementById("wr");
+    var fu = document.getElementById("fu");
+    var fp = document.getElementById("fp");
+    var username=document.getElementById("username").value;
+    var password=document.getElementById("pass").value;
+    var box=document.getElementById("box");
+    var Form = document.getElementById("myForm");
+    if(username=="nibir123"&& password=="12qaswedfr")
+    {
+    popup.classList.add("open-popup");
+    box.classList.add("box-filter");
+    wrong.style.display = "none";
+    fp.style.display = "none";
+    fu.style.display = "none";
+    }
+    else if(username==""){
+        fu.style.display = "block";
+        wrong.style.display = "none";
+        fp.style.display = "none";
+        return false;
+    }
+    else if(password==""){
+        fp.style.display = "block";
+        wrong.style.display = "none";
+        fu.style.display = "none";
+        return false;
+    }
+    else{
+        wrong.style.display = "block";
+        fu.style.display = "none";
+        fp.style.display = "none";
+        return false;
+    }
+}
+function validate2(){
+    var Form = document.getElementById("myForm");
+    popup.classList.remove("open-popup");
+     box.classList.remove("box-filter");
+     Form.submit();
+    }
+
+    
+
+ </script>
+</body>
+</html>
